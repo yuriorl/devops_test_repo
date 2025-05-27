@@ -14,9 +14,9 @@ jobs:
       - name: Run Makefile
         run: make install
       
-  run-script:
+  run-test:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run Makefile
-        run: make test-script
+        run: make run-test
