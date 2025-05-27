@@ -7,10 +7,15 @@ on:
     branches: [ main ]
 
 jobs:
+  install:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Makefile
+      
   run-script:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run Makefile
-        run: make install
-        run: make run-script
+        run: make test-script
