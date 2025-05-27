@@ -1,9 +1,9 @@
 # Задача для установки зависимостей
 install:
     # Устанавливаем 7z
-    powershell -Command "Install-Module -Name 7Zip4PowerShell -Force -Scope CurrentUser"
+    Install-Module -Name 7Zip4PowerShell -Force -Scope CurrentUser
     # Устанавливаем PowerShell Pester
-    powershell -Command "Install-Module -Name Pester -Force -SkipPublisherCheck"
+    Install-Module -Name Pester -Force -SkipPublisherCheck
 
 # Задача для запуска PowerShell Pester теста
 run-test:
