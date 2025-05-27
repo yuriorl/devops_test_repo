@@ -1,22 +1,22 @@
 name: Run PowerShell Script
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    push:
+          branches: [ main ]
+    pull_request:
+          branches: [ main ]
 
 jobs:
-  install:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run Makefile
-        run: make install
+      install:
+              runs-on: windows-latest
+              steps:
+                    - uses: actions/checkout@v4
+                    - name: Run Makefile
+                      run: make install
       
-  run-test:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run Makefile
-        run: make run-test
+      run-test:
+              runs-on: windows-latest
+              steps:
+                    - uses: actions/checkout@v4
+                    - name: Run Makefile
+                      run: make run-test
