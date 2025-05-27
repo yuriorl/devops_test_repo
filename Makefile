@@ -1,6 +1,5 @@
 # Задача для установки зависимостей
 install:
-    @echo "Установка зависимостей..."
     # Устанавливаем 7z
     powershell -Command "Install-Module -Name 7Zip4PowerShell -Force -Scope CurrentUser"
     # Устанавливаем PowerShell Pester
