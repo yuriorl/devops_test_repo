@@ -1,7 +1,7 @@
 # Задача для установки зависимостей
 install:
     @echo "Установка зависимостей..."
-    # Пример: установка модуля PowerShell
+    # Устанавливаем 7z
     powershell -Command "Install-Module -Name 7Zip4PowerShell -Force -Scope CurrentUser"
 
 # Задача для запуска PowerShell скрипта
