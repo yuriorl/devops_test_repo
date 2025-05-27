@@ -10,4 +10,4 @@ install:
 run-test:
     ./tests/get_archive_and_hashes.Tests.ps1
 
-.PHONY: run-script install
+.PHONY: install run-test
