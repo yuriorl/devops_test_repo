@@ -8,6 +8,6 @@ install:
 
 # Задача для запуска PowerShell Pester теста
 run-test:
-    ./tests/get_archive_and_hashes.Tests.ps1
+    Invoke-Pester -Path "./tests/get_archive_and_hashes.Tests.ps1" -Output Detailed
 
 .PHONY: install run-test
