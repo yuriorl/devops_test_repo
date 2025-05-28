@@ -29,9 +29,6 @@ jobs:
                     if: runner.os == 'Windows'
                     run: choco install make -y
         
-                -   name: Build image
-                    run: make build-image-job
-                    timeout-minutes: 10
-                -   name: Run container
-                    run: make run-test-job
+                -   name: Build image and run test
+                    run: make build-and-run-job
                     timeout-minutes: 10
