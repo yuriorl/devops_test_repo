@@ -30,5 +30,7 @@ jobs:
         
                 -   name: Build image
                     run: make build-image-job
+                    timeout-minutes: 10
                 -   name: Run container
                     run: make run-test-job
+                    timeout-minutes: 10
