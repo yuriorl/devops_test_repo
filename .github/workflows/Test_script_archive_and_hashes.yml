@@ -22,6 +22,7 @@ jobs:
                     if: runner.os == 'Windows'
                     shell: powershell
                     run: |
+                          wsl --update
                           wsl --install -d Ubuntu-20.04
 
                           Start-Sleep -Seconds 30
