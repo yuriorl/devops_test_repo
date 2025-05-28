@@ -10,12 +10,14 @@ Describe "Checking if the result archive exists and is not null" {
 
 	It "Checking if the folder is empty" {
 		        $items = Get-ChildItem -Path "\dev_artifacts" -ErrorAction SilentlyContinue
-			Write-Host "Checking if artifacts foldes is empty"
+			Write-Host "Items: $items"
+			Write-Host "Checking if artifacts folder is empty"
         		$items.Count | Should -Not -Be 0 -Because "dev_artifacts folder should not be empty"
 	}
 	It "Checking if the archives are empty" {
 		$archives = Get-ChildItem -Path "\dev_artifacts" -File
-        		foreach ($archive in $archives) {
+		Write-Host "Archives: $archives"
+        	foreach ($archive in $archives) {
             		Write-Host "Checking if size of $($archive.FullName) is 0"
             		$archive.Length | Should -BeGreaterThan 0 -Because "$($archive.Name) should not be empty"
 		} 
