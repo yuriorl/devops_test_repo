@@ -1,5 +1,5 @@
 build-image-job:
-		docker build -t scriptimage -f ./Dockerfile	
+		docker build . -t scriptimage	
 
 run-test-job:
 		docker run -it --rm scriptimage -s -v
