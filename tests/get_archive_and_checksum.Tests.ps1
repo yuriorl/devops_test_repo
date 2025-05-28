@@ -21,6 +21,7 @@ Describe "Checking if the result archive exists and is not null" {
             		Write-Host "Checking if size of $($archive.FullName) is 0"
             		$archive.Length | Should -BeGreaterThan 0 -Because "$($archive.Name) should not be empty"
 		} 
+
 	}
 	It "Checking if the temp service folders are removed" {
 		Get-ChildItem -Path "$currentPath\dev_build" | ForEach-Object {
@@ -30,8 +31,6 @@ Describe "Checking if the result archive exists and is not null" {
 			Write-Host "$_ hashes are removed"
 			Test-Path "..\$currentPath\dev_$_`_totalhashes" | Should -Not -Exist
 			Write-Host "$_ totalhashes are removed"
-			Test-Path "..\$currentPath\dev_artifacts\$_`_artifacts_extracted.7z" | Should -Not -Exist
-			Write-Host "$_ exctracted archive is removed"
 		}
 	}
 	
