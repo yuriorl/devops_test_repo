@@ -13,17 +13,7 @@
 - Что архивы имеют размер больше 0
 - Что все вспомогательные файлы были удалены скриптом
 3+4) C Makefile и Github action возникли проблемы. Собрал докерфайл, у меня он отрабатывает. В Github action тоже вижу, что на ubuntu образ собирается, контейнер отрабатывает, все тесты пройдены,
-но в конце ошибка Error: The operation was canceled. Полагаю ошибка в некорректном завершении пайплайна
-Часть лога:
-<<<<<
-/dev_build/makecake hashes are removed
-/dev_build/makecake totalhashes are removed
-/dev_build/makecake exctracted archive is removed
-[+] /tests/get_archive_and_checksum.Tests.ps1 1.04s (598ms|244ms)
-Tests completed in 1.06s
-Tests Passed: 3, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
-Error: The operation was canceled.
->>>>> !!!!!!!ОТМЕЧУ ЧТО один раз успешно отработал (Коммит: Delete \dev_artifacts #38)!!!!!!!!!!!!! и после тоже начал отрабатывать, вероятно файл с названием таким же как и директория мешался
+но работает только на Ubuntu
 С запуском на windows всё не очень, не удаётся настроить Docker
 
 Итоги:
