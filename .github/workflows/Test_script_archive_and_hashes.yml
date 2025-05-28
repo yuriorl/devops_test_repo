@@ -22,14 +22,14 @@ jobs:
                     if: runner.os == 'Windows'
                     shell: powershell
                     run: |
-                          wsl --install -d Ubuntu
+                          wsl --install -d Ubuntu-24.04
 
                           Start-Sleep -Seconds 30
                           wsl -d Ubuntu -e bash -c "
                           sudo apt update && sudo apt upgrade -y
                           sudo apt install -y apt-transport-https ca-certificates curl software-properties-common lsb-core
                           curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-                          echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -r) stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+                          echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu 24.04 stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
                           sudo apt update
                           sudo apt install -y docker-ce docker-ce-cli containerd.io
                           sudo usermod -aG docker \$USER
