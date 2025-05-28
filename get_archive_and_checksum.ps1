@@ -52,12 +52,6 @@ Get-ChildItem -Path "./dev_build/*" | Where-Object { $_.Mode -like "d*" } | Fore
 	& "7z" a -t7z "$artifactsPath/${projectName}_artifacts.7z" -spf -snl "$projectPath" "$hashDir"
 
 # Ищем общие хэши полученного архива
-	$archivePath = "$artifactsPath/${projectName}_artifacts.7z"
-	$extractPath = "$artifactsPath/${projectName}_artifacts_extracted.7z"
-
-	Write-Host "Unzipping"	
-	#Expand-Archive -Path $archivePath -DestinationPath $extractPath -Force
-	7z x -r "$archivePath" -o"$extractPath"
 
 	New-Item -Path "$currentPath/dev_${projectName}_totalhashes" -ItemType Directory -Force
 	$totalhashDir = "$currentPath/dev_${projectName}_totalhashes"
@@ -90,7 +84,6 @@ Get-ChildItem -Path "./dev_build/*" | Where-Object { $_.Mode -like "d*" } | Fore
 
 # Чистим за собой служебные папки и файлы
 
-	Remove-Item -Path "$extractPath" -Recurse -Force
 	Remove-Item -Path "$hashDir" -Recurse -Force
 	Remove-Item -Path "$totalhashDir" -Recurse -Force
 
