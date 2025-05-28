@@ -2,21 +2,33 @@ name: Run PowerShell Script
 
 on:
     push:
-          branches: [ main ]
+                branches: [ main ]
     pull_request:
-          branches: [ main ]
+                branches: [ main ]
 
 jobs:
-      install:
-              runs-on: windows-latest
-              steps:
-                    - uses: actions/checkout@v4
-                    - name: Run Makefile
-                      run: make install
-      
-      run-test:
-              runs-on: windows-latest
-              steps:
-                    - uses: actions/checkout@v4
-                    - name: Run Makefile
-                      run: make run-test
+        run-script:
+                strategy:
+                        matrix:
+                                os: [ubuntu-latest, windows-latest]
+                runs-on: ${{ matrix.os }}
+              
+                steps:
+                -   name: Checkout code
+                    uses: actions/checkout@v4
+    
+                -   name: Set up Docker
+                    if: runner.os != 'Windows'
+                    run: |
+                        sudo apt-get update
+                        sudo apt-get install -y docker.io
+                        sudo systemctl start docker
+        
+                -   name: Install Make (Windows)
+                    if: runner.os == 'Windows'
+                    run: choco install make -y
+        
+                -   name: Build image
+                    run: make build-image-jobs
+                -   name: Run container
+                    run: make run-test-job
