@@ -29,6 +29,6 @@ jobs:
                     run: choco install make -y
         
                 -   name: Build image
-                    run: make build-image-jobs
+                    run: make build-image-job
                 -   name: Run container
                     run: make run-test-job
