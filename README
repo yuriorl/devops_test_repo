@@ -23,5 +23,8 @@
 Tests completed in 1.06s
 Tests Passed: 3, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
 Error: The operation was canceled.
->>>>>
-С запуском на windows всё совсем плохо
+>>>>> !!!!!!!ОТМЕЧУ ЧТО один раз успешно отработал (Коммит: Delete \dev_artifacts #38)!!!!!!!!!!!!! и после тоже начал отрабатывать, вероятно файл с названием таким же как и директория мешался
+С запуском на windows всё не очень, не удаётся настроить Docker
+
+Итоги:
+Отрабатывает на Linux, не отрабатывает на Windows
