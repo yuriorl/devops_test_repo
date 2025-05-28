@@ -22,7 +22,7 @@ jobs:
                     if: runner.os == 'Windows'
                     shell: powershell
                     run: |
-                          wsl --install -d Ubuntu -y
+                          wsl --install -d Ubuntu
 
                           Start-Sleep -Seconds 30
                           wsl -d Ubuntu -e bash -c "
