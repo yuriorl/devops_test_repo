@@ -4,7 +4,7 @@ COPY ./tests ./tests
 COPY ./get_archive_and_checksum.ps1 ./get_archive_and_checksum.ps1
 COPY ./dev_artifacts ./dev_artifacts
 RUN apt-get update && apt-get install --no-install-recommends -y p7zip-full && \
-apt-get clean \
+apt-get clean && \
 pwsh -Command " \
     Install-Module -Name 7Zip4PowerShell -Force -Scope CurrentUser; \
     Install-Module -Name Pester -Force -SkipPublisherCheck -Scope CurrentUser \
