@@ -20,7 +20,7 @@ jobs:
                     timeout-minutes: 10
                     
         run-test-windows:
-                runs-on: ubuntu-latest
+                runs-on: windows
                 timeout-minutes: 20
               
                 steps:
