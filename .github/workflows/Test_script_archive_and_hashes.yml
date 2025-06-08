@@ -33,9 +33,7 @@ jobs:
                         iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
                         choco install make 7zip.install -y
                         
-                -   name: Intall modules for tests
-                    run: make install-modules
-                    timeout-minutes: 10
+
 
                     
                 -   name: Run tests
