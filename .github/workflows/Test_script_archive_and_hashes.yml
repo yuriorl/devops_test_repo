@@ -7,38 +7,35 @@ on:
                 branches: [ main ]
 
 jobs:
-        run-script:
-                strategy:
-                        matrix:
-                                os: [ubuntu-latest, windows-latest]
-                runs-on: ${{ matrix.os }}
+        run-test-ubuntu:
+                runs-on: ubuntu-latest
                 timeout-minutes: 20
               
                 steps:
                 -   name: Checkout code
                     uses: actions/checkout@v4
-    
-                -   name: Set up Docker
-                    if: runner.os == 'Windows'
-                    shell: powershell
-                    run: |
-                          wsl --update
-                          wsl --install -d Ubuntu-20.04
-
-                          Start-Sleep -Seconds 30
-                          wsl -d Ubuntu -e bash -c "
-                          sudo apt update && sudo apt upgrade -y
-                          sudo apt install -y apt-transport-https ca-certificates curl software-properties-common lsb-core
-                          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-                          echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu 20.04 stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-                          sudo apt update
-                          sudo apt install -y docker-ce docker-ce-cli containerd.io
-                          sudo usermod -aG docker \$USER
-                          sudo service docker start"
-                -   name: Install Make (Windows)
-                    if: runner.os == 'Windows'
-                    run: choco install make -y
-        
+                    
                 -   name: Build image and run test
-                    run: make build-and-run-job
+                    run: make build-image-and-run-container
+                    timeout-minutes: 10
+                    
+        run-test-windows:
+                runs-on: ubuntu-latest
+                timeout-minutes: 20
+              
+                steps:
+                -   name: Checkout code
+                    uses: actions/checkout@v4
+                -   name: Install Make for Windows
+                    run: Set-ExecutionPolicy Bypass -Scope Process -Force;
+                        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+                        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
+                        choco install make
+
+                -   name: Intall modules for tests
+                    run: make install-modules
+                    timeout-minutes: 10
+                    
+                -   name: Run tests
+                    run: make run-pester-tests
                     timeout-minutes: 10
