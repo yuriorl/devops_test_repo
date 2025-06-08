@@ -20,7 +20,7 @@ jobs:
                     timeout-minutes: 10
                     
         run-test-windows:
-                runs-on: windows
+                runs-on: windows-latest
                 timeout-minutes: 20
               
                 steps:
