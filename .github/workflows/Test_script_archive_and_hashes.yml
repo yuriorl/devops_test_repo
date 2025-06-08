@@ -27,9 +27,10 @@ jobs:
                 -   name: Checkout code
                     uses: actions/checkout@v4
                 -   name: Install Make for Windows
-                    run: Set-ExecutionPolicy Bypass -Scope Process -Force;
-                        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-                        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
+                    run: |
+                        Set-ExecutionPolicy Bypass -Scope Process -Force
+                        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+                        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
                         choco install make
 
                 -   name: Intall modules for tests
