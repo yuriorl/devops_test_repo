@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/powershell:latest
 COPY ./dev_build ./dev_build
 COPY ./tests ./tests
 COPY ./get_archive_and_checksum.ps1 ./get_archive_and_checksum.ps1
-COPY ./dev_artifacts ./dev_artifacts
+RUN mkdir -p ./dev_artifacts
 RUN apt-get update && apt-get install --no-install-recommends -y p7zip-full && \
 apt-get clean && \
 pwsh -Command " \
